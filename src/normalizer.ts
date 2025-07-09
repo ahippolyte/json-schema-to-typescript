@@ -84,7 +84,10 @@ rules.set('Add an $id to anything that needs it', (schema, fileName, _options, _
 
   // Top-level schema
   if (!schema.$id && !schema[Parent]) {
-    schema.$id = toSafeString(justName(fileName))
+    // Use the filename without extension and remove Schema/schema suffixes
+    const baseName = justName(fileName)
+    const cleanName = baseName.replace(/[_-]?[Ss]chema$/, '') // Remove "Schema", "_schema", "-schema" suffixes
+    schema.$id = toSafeString(cleanName)
     return
   }
 
