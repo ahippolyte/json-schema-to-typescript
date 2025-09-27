@@ -1,15 +1,13 @@
 {
   "name": "@taxai/json-schema-to-typescript",
-  "version": "15.0.3",
+  "version": "15.0.3-taxai.1",
   "description": "compile json schema to typescript typings",
   "main": "dist/src/index.js",
   "bin": {
     "json2ts": "dist/src/cli.js"
   },
   "typings": "dist/src/index.d.ts",
-  "engines": {
-    "node": ">=16.0.0"
-  },
+  "engines": { "node": ">=16.0.0" },
   "scripts": {
     "build": "npm run lint && npm run clean && npm run build:browser && npm run build:server",
     "build:browser": "browserify src/index.ts -s jstt -p tsify > dist/bundle.js",
@@ -24,7 +22,8 @@
     "prepublishOnly": "npm test",
     "pre-test": "npm run clean && npm run format-check && npm run build:server",
     "watch": "tsc -w",
-    "watch:test": "ava -w"
+    "watch:test": "ava -w",
+    "prepare": "npm run build"
   },
   "repository": {
     "type": "git",
